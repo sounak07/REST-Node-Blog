@@ -104,5 +104,5 @@ app.delete("/blogs/:id", function(req, res){
 
 //listen to the c9 server
 app.listen(process.env.PORT, process.env.IP,function(){
-    console.log("Yelp Camp Server is Running");
+    console.log("Blog Server is Running");
 }); 
