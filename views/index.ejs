@@ -7,11 +7,11 @@
               <% blogs.forEach(function(blog){ %>
                     <div class="item">
                         <div class="ui medium round image">
-                           <img src="<%= blog.image %>"> 
+                           <img src="<%= blog.image %>">
                         </div>
                         <div class="content">
                             <a class="header" href="/blogs/<%= blog._id%>"><%= blog.title %></a>
-                            <div class="meta"> 
+                            <div class="meta">
                                 <span><%= blog.created.toString() %></span>
                             </div>
                             <div class="description">
@@ -26,9 +26,8 @@
                 </div>
             <% }); %>
           </div>
-      </div>    
+      </div>
 </div>
-
 
 
 <% include ./partials/footer %>
