@@ -1,6 +1,8 @@
+var staticCache = "blog-v2";
+
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open("cache-v1").then(function(cache) {
+    caches.open(staticCache).then(function(cache) {
       return cache.addAll([
         '/',
         '/blogs',
@@ -11,6 +13,21 @@ self.addEventListener('install', function(event) {
         'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css',
         'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
       ]);
+    })
+  );
+});
+
+self.addEventListener('activate', function(event){
+  event.waitUntil(
+    caches.keys().then(function(cacheNames){
+      return Promise.all(
+        cacheNames.filter(function(cacheName) {
+          return cacheName.startsWith('blog-') &&
+                cacheName != staticCache;
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
     })
   );
 });
